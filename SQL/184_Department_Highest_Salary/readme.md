@@ -1,42 +1,55 @@
+**Задача: Сотрудники с самой высокой зарплатой в каждом отделе**
+
+**Таблица: Employee**
+
+```
 +--------------+---------+
-| Column Name  | Type    |
+| Имя столбца  | Тип     |
 +--------------+---------+
 | id           | int     |
 | name         | varchar |
 | salary       | int     |
 | departmentId | int     |
 +--------------+---------+
-id is the primary key (column with unique values) for this table.
-departmentId is a foreign key (reference columns) of the ID from the Department table.
-Each row of this table indicates the ID, name, and salary of an employee. It also contains the ID of their department.
+```
 
+`id` — первичный ключ (столбец с уникальными значениями) для этой таблицы.
+`departmentId` — внешний ключ, ссылающийся на `id` из таблицы `Department`.
+Каждая строка таблицы содержит ID, имя и зарплату сотрудника, а также ID его отдела.
 
+---
 
-Table: Department
+**Таблица: Department**
 
+```
 +-------------+---------+
-| Column Name | Type    |
+| Имя столбца | Тип     |
 +-------------+---------+
 | id          | int     |
 | name        | varchar |
 +-------------+---------+
-id is the primary key (column with unique values) for this table. It is guaranteed that department name is not NULL.
-Each row of this table indicates the ID of a department and its name.
+```
 
+`id` — первичный ключ (столбец с уникальными значениями) для этой таблицы.
+Гарантируется, что имя отдела не является NULL.
+Каждая строка таблицы содержит ID и название отдела.
 
+---
 
-Write a solution to find employees who have the highest salary in each of the departments.
+**Задача:**
+Напишите решение, чтобы найти сотрудников, у которых самая высокая зарплата в каждом отделе.
 
-Return the result table in any order.
+Верните результат в виде таблицы в любом порядке.
 
-The result format is in the following example.
+Формат результата показан в примере ниже.
 
+---
 
+**Пример 1:**
 
-Example 1:
-
-Input:
-Employee table:
+**Ввод:**
+Таблица `Employee`:
+```
 +----+-------+--------+--------------+
 | id | name  | salary | departmentId |
 +----+-------+--------+--------------+
@@ -46,14 +59,20 @@ Employee table:
 | 4  | Sam   | 60000  | 2            |
 | 5  | Max   | 90000  | 1            |
 +----+-------+--------+--------------+
-Department table:
+```
+
+Таблица `Department`:
+```
 +----+-------+
 | id | name  |
 +----+-------+
 | 1  | IT    |
 | 2  | Sales |
 +----+-------+
-Output:
+```
+
+**Вывод:**
+```
 +------------+----------+--------+
 | Department | Employee | Salary |
 +------------+----------+--------+
@@ -61,4 +80,7 @@ Output:
 | Sales      | Henry    | 80000  |
 | IT         | Max      | 90000  |
 +------------+----------+--------+
-Explanation: Max and Jim both have the highest salary in the IT department and Henry has the highest salary in the Sales department.
+```
+
+**Объяснение:**
+Jim и Max имеют самую высокую зарплату в отделе IT (90000), а Henry — самый высокооплачиваемый сотрудник в отделе Sales (80000).

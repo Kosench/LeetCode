@@ -1,50 +1,60 @@
-183. Customers Who Never Order
-Solved
-Easy
-Topics
-premium lock iconCompanies
-SQL Schema
-Pandas Schema
+**183. Покупатели, которые никогда не делали заказов**
+Решено
+Легко
+Темы
+значок премиум-доступа Компании
+Схема SQL
+Схема Pandas
 
-Table: Customers
+---
 
+**Таблица: Customers**
+
+```
 +-------------+---------+
-| Column Name | Type    |
+| Имя столбца | Тип     |
 +-------------+---------+
 | id          | int     |
 | name        | varchar |
 +-------------+---------+
-id is the primary key (column with unique values) for this table.
-Each row of this table indicates the ID and name of a customer.
+```
 
+`id` — первичный ключ (столбец с уникальными значениями) для этой таблицы.
+Каждая строка таблицы содержит ID и имя покупателя.
 
+---
 
-Table: Orders
+**Таблица: Orders**
 
+```
 +-------------+------+
-| Column Name | Type |
+| Имя столбца | Тип  |
 +-------------+------+
 | id          | int  |
 | customerId  | int  |
 +-------------+------+
-id is the primary key (column with unique values) for this table.
-customerId is a foreign key (reference columns) of the ID from the Customers table.
-Each row of this table indicates the ID of an order and the ID of the customer who ordered it.
+```
 
+`id` — первичный ключ (столбец с уникальными значениями) для этой таблицы.
+`customerId` — внешний ключ, ссылающийся на `id` из таблицы `Customers`.
+Каждая строка таблицы содержит ID заказа и ID покупателя, сделавшего этот заказ.
 
+---
 
-Write a solution to find all customers who never order anything.
+**Задача:**
+Напишите SQL-запрос, чтобы найти всех покупателей, которые **никогда не делали заказов**.
 
-Return the result table in any order.
+Верните результат в виде таблицы в любом порядке.
 
-The result format is in the following example.
+Формат результата показан в примере ниже.
 
+---
 
+**Пример 1:**
 
-Example 1:
-
-Input:
-Customers table:
+**Ввод:**
+Таблица `Customers`:
+```
 +----+-------+
 | id | name  |
 +----+-------+
@@ -53,17 +63,29 @@ Customers table:
 | 3  | Sam   |
 | 4  | Max   |
 +----+-------+
-Orders table:
+```
+
+Таблица `Orders`:
+```
 +----+------------+
 | id | customerId |
 +----+------------+
 | 1  | 3          |
 | 2  | 1          |
 +----+------------+
-Output:
+```
+
+**Вывод:**
+```
 +-----------+
 | Customers |
 +-----------+
 | Henry     |
 | Max       |
 +-----------+
+```
+
+**Объяснение:**
+Покупатели с `id = 1` (Joe) и `id = 3` (Sam) сделали заказы.
+Покупатели с `id = 2` (Henry) и `id = 4` (Max) — нет.
+Поэтому в результат включены Henry и Max.
