@@ -65,3 +65,26 @@ func main() {
 	fmt.Println(validPalindrome("A man, a plan, a canal: Panama"))
 	fmt.Println(validPalindrome("abca"))
 }
+
+func validPalindrome_2(s string) bool {
+	left, right := 0, len(s)-1
+	for left < right {
+		if s[left] == s[right] {
+			left++
+			right--
+		} else {
+			return isPalindrome_2(left+1, right, s) || isPalindrome_2(left, right-1, s)
+		}
+	}
+	return true
+}
+func isPalindrome_2(left, right int, s string) bool {
+	for left < right {
+		if s[left] != s[right] {
+			return false
+		}
+		left++
+		right--
+	}
+	return true
+}
