@@ -16,7 +16,20 @@ func maxArea(height []int) int {
 		if area > maxWater {
 			maxWater = area
 		}
+	}
+	return maxWater
+}
 
+func main() {
+	fmt.Println(maxArea([]int{1, 8, 6, 2, 5, 4, 8, 3, 7}))
+}
+
+func maxArea_2(height []int) int {
+	left, right := 0, len(height)-1
+	maxWater := 0
+	for left < right {
+		area := min(height[left], height[right]) * (right - left)
+		maxWater = max(maxWater, area)
 		if height[left] < height[right] {
 			left++
 		} else {
@@ -24,8 +37,4 @@ func maxArea(height []int) int {
 		}
 	}
 	return maxWater
-}
-
-func main() {
-	fmt.Println(maxArea([]int{1, 8, 6, 2, 5, 4, 8, 3, 7}))
 }
