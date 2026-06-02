@@ -3,32 +3,29 @@ package main
 import "fmt"
 
 func maxArea(height []int) int {
-	var result int
 	left, right := 0, len(height)-1
+	maxWater := 0
 
 	for left < right {
-		area := (right - left) * min(height[left], height[right])
-		if area > result {
-			result = area
+		h := height[left]
+		if height[right] < h {
+			h = height[right]
 		}
-		if height[left] <= height[right] {
+
+		area := h * (right - left)
+		if area > maxWater {
+			maxWater = area
+		}
+
+		if height[left] < height[right] {
 			left++
 		} else {
 			right--
 		}
 	}
-
-	return result
-}
-
-func min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
+	return maxWater
 }
 
 func main() {
-	height := []int{1, 7, 2, 5, 4, 7, 3, 6}
-	fmt.Println(maxArea(height))
+	fmt.Println(maxArea([]int{1, 8, 6, 2, 5, 4, 8, 3, 7}))
 }
