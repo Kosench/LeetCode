@@ -1,3 +1,4 @@
+// «Безопасно выбросить»
 package main
 
 import "fmt"

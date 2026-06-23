@@ -1,3 +1,4 @@
+// Безопасно выбросить» (discard invariant)
 package main
 
 import "fmt"
